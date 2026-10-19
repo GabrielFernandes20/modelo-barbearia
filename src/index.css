@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-dark-950 text-cream-100 font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-cream-50;
+    letter-spacing: -0.01em;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: #D4AF37;
+    color: #0B0A09;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Custom dark gold scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B0A09;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #34302A;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D4AF37;
+  }
+
+  a {
+    text-underline-offset: 3px;
+  }
+}
+
+/* ============================================================
+ * KEYFRAMES — REAPROVEITADAS & CALIBRADAS DE BEAUTY-SITE
+ * ============================================================ */
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(10px, -18px) scale(1.06);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-12px, 16px) scale(0.95);
+  }
+}
+
+@keyframes pulseGlowGold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(212, 175, 55, 0);
+  }
+}
+
+@keyframes shimmerLoop {
+  0% {
+    left: -120%;
+  }
+  20%, 100% {
+    left: 140%;
+  }
+}
+
+@keyframes barberGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.45));
+  }
+}
+
+@layer components {
+  /* Scroll reveal animation styles (exponential ease-out) */
+  .reveal-init {
+    opacity: 0;
+    transform: translateY(38px) scale(0.98);
+    transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-init.is-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Stagger delays */
+  .reveal-delay-1 {
+    transition-delay: 100ms;
+  }
+  .reveal-delay-2 {
+    transition-delay: 200ms;
+  }
+  .reveal-delay-3 {
+    transition-delay: 300ms;
+  }
+  .reveal-delay-4 {
+    transition-delay: 400ms;
+  }
+
+  /* Hero entrance staggered sequence */
+  .hero-animate-1 {
+    animation: heroFadeIn 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 150ms;
+  }
+  .hero-animate-2 {
+    animation: heroFadeIn 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 300ms;
+  }
+  .hero-animate-3 {
+    animation: heroFadeIn 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 450ms;
+  }
+  .hero-animate-4 {
+    animation: heroFadeIn 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 600ms;
+  }
+  .hero-animate-5 {
+    animation: heroFadeIn 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 750ms;
+  }
+  .hero-animate-6 {
+    animation: heroFadeIn 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 900ms;
+  }
+  .hero-visual-animate {
+    animation: heroScaleIn 950ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 350ms;
+  }
+
+  /* Ambient floating orbs (warm gold & amber lighting) */
+  .ambient-float-1 {
+    animation: floatSlow 9s ease-in-out infinite;
+  }
+  .ambient-float-2 {
+    animation: floatReverse 11s ease-in-out infinite;
+  }
+
+  /* Luxury Gold Sheen / Shimmer effect for CTA buttons */
+  .btn-luxury-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-luxury-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    animation: shimmerLoop 4.5s infinite;
+  }
+
+  .btn-luxury-shimmer:hover::after {
+    left: 140%;
+    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Pulse indicator on Before & After slider handle */
+  .animate-pulse-handle {
+    animation: pulseGlowGold 2.2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Card elevation with smooth border glow */
+  .card-interactive {
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease;
+  }
+  .card-interactive:hover {
+    transform: translateY(-6px);
+  }
+}
+
+@layer utilities {
+  .container-editorial {
+    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Gold gradient text */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #FFF3D4 0%, #D4AF37 50%, #AA820A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Subtle border glow */
+  .border-gold-subtle {
+    border-color: rgba(212, 175, 55, 0.22);
+  }
+  .border-gold-subtle:hover {
+    border-color: rgba(212, 175, 55, 0.55);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-animate-1,
+  .hero-animate-2,
+  .hero-animate-3,
+  .hero-animate-4,
+  .hero-animate-5,
+  .hero-animate-6,
+  .hero-visual-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .ambient-float-1,
+  .ambient-float-2 {
+    animation: none !important;
+  }
+
+  .card-interactive:hover {
+    transform: none !important;
+  }
+
+  .btn-luxury-shimmer::after {
+    animation: none !important;
+    display: none !important;
+  }
+}
