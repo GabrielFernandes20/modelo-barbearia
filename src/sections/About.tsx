@@ -15,20 +15,20 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column — Photographic Composition */}
-          <div className="lg:col-span-5 relative reveal-init">
+          <div className="lg:col-span-5 relative reveal-from-left">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
               <div className="relative rounded-2xl overflow-hidden border border-gold/30 bg-dark-950 shadow-dark-card-lg">
                 <img
                   src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=80"
                   alt="Interior da barbearia clássica com poltronas de couro vintage e iluminação âmbar"
-                  className="w-full h-[520px] object-cover filter brightness-90 contrast-105"
+                  className="w-full h-[520px] object-cover filter brightness-90 contrast-105 transition-transform duration-700 hover:scale-[1.03]"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent" />
                 
                 {/* Floating pill badge */}
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-dark-900/90 backdrop-blur-md border border-gold/30">
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-dark-900/90 backdrop-blur-md border border-gold/30 transition-transform duration-300 hover:-translate-y-1">
                   <span className="text-gold text-xs font-bold uppercase tracking-wider block">
                     Nossa Missão
                   </span>
@@ -40,7 +40,7 @@ export function About() {
 
               {/* Floating Experience Badge */}
               <div className="ambient-float-1 absolute -bottom-6 -right-4 sm:-right-6 bg-dark-950 border border-gold/40 p-4 rounded-2xl shadow-dark-card text-center">
-                <span className="font-display text-3xl font-extrabold text-gold block">
+                <span className="font-display text-3xl font-extrabold text-gold animate-glow-text block">
                   {company.stats.experienceYears}
                 </span>
                 <span className="text-[11px] text-cream-300 uppercase tracking-wider">
@@ -52,7 +52,7 @@ export function About() {
           </div>
 
           {/* Right Column — Narrative & Principles */}
-          <div className="lg:col-span-7 flex flex-col items-start reveal-init reveal-delay-2">
+          <div className="lg:col-span-7 flex flex-col items-start reveal-from-right">
             
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-bold uppercase tracking-widest mb-4">
               <RazorIcon className="w-3.5 h-3.5 text-gold" />
@@ -73,7 +73,7 @@ export function About() {
 
             {/* Feature Bullets */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-8">
-              <div className="p-4 rounded-xl bg-dark-950 border border-dark-800">
+              <div className="reveal-init reveal-delay-1 p-4 rounded-xl bg-dark-950 border border-dark-800 hover:border-gold/40 transition-all duration-300 hover:-translate-y-1 group">
                 <div className="flex items-center gap-2 mb-1.5 text-gold font-bold text-sm">
                   <CheckCircleIcon className="w-4 h-4 text-gold" />
                   <span>Biossegurança Total</span>
@@ -83,7 +83,7 @@ export function About() {
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-dark-950 border border-dark-800">
+              <div className="reveal-init reveal-delay-2 p-4 rounded-xl bg-dark-950 border border-dark-800 hover:border-gold/40 transition-all duration-300 hover:-translate-y-1 group">
                 <div className="flex items-center gap-2 mb-1.5 text-gold font-bold text-sm">
                   <BeerIcon className="w-4 h-4 text-amber-brand" />
                   <span>Lounge Bar Confortável</span>
@@ -99,7 +99,7 @@ export function About() {
               href={bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-luxury-shimmer inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-gold via-amber-brand to-gold text-dark-950 font-bold text-sm shadow-gold-glow hover:shadow-gold-glow-lg transition-all duration-200"
+              className="btn-luxury-shimmer inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-gold via-amber-brand to-gold text-dark-950 font-bold text-sm shadow-gold-glow hover:shadow-gold-glow-lg hover:scale-105 active:scale-95 transition-all duration-300"
             >
               <WhatsAppIcon className="w-4 h-4 fill-dark-950" />
               <span>Conhecer de Perto • Agendar Horário</span>

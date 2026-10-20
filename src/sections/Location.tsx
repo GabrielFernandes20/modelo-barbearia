@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { company } from "../data/company";
-import { MapPinIcon, ClockIcon, PhoneIcon } from "../components/icons";
+import { MapPinIcon, ClockIcon, PhoneIcon, CheckCircleIcon } from "../components/icons";
 
 export function Location() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyAddress = () => {
+    const fullAddress = `${company.address.street}, ${company.address.neighborhood}, ${company.address.city} - ${company.address.state}`;
+    navigator.clipboard?.writeText(fullAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2400);
+  };
+
   const wazeUrl = `https://waze.com/ul?q=${encodeURIComponent(
     `${company.address.street}, ${company.address.city}, ${company.address.state}`
   )}`;
@@ -26,20 +35,37 @@ export function Location() {
         </div>
 
         {/* Location Details Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal-init">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left: Info Card (5 cols) */}
-          <div className="lg:col-span-5 bg-dark-900 border border-dark-800 rounded-2xl p-6 sm:p-8 shadow-dark-card space-y-6">
+          <div className="reveal-from-left lg:col-span-5 bg-dark-900 border border-dark-800 rounded-2xl p-6 sm:p-8 shadow-dark-card space-y-6">
             
             {/* Address */}
             <div className="flex items-start gap-4 pb-6 border-b border-dark-800">
-              <div className="w-10 h-10 rounded-xl bg-dark-950 border border-gold/40 flex items-center justify-center text-gold shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-dark-950 border border-gold/40 flex items-center justify-center text-gold shrink-0 transition-transform duration-300 hover:scale-110">
                 <MapPinIcon className="w-5 h-5" />
               </div>
-              <div>
-                <span className="text-xs text-gold uppercase tracking-wider font-bold block mb-1">
-                  Endereço
-                </span>
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs text-gold uppercase tracking-wider font-bold block">
+                    Endereço
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleCopyAddress}
+                    className="text-xs px-2.5 py-1 rounded-full border border-dark-700 bg-dark-950 text-cream-300 hover:text-gold hover:border-gold/50 transition-all active:scale-95 flex items-center gap-1"
+                    aria-label="Copiar endereço completo"
+                  >
+                    {copied ? (
+                      <span className="flex items-center gap-1 text-gold font-semibold animate-toast-slide">
+                        <CheckCircleIcon className="w-3.5 h-3.5 text-gold" />
+                        <span>Copiado!</span>
+                      </span>
+                    ) : (
+                      <span>Copiar</span>
+                    )}
+                  </button>
+                </div>
                 <p className="text-cream-100 font-semibold text-base">{company.address.street}</p>
                 <p className="text-cream-400 text-sm">
                   {company.address.neighborhood} — {company.address.city}, {company.address.state}
@@ -93,7 +119,7 @@ export function Location() {
           </div>
 
           {/* Right: Map / Visual Location Representation (7 cols) */}
-          <div className="lg:col-span-7 bg-dark-900 border border-dark-800 rounded-2xl overflow-hidden shadow-dark-card-lg relative aspect-[16/10] min-h-[340px]">
+          <div className="reveal-from-right lg:col-span-7 bg-dark-900 border border-dark-800 rounded-2xl overflow-hidden shadow-dark-card-lg relative aspect-[16/10] min-h-[340px]">
             {/* Visual stylised map background */}
             <div className="absolute inset-0 bg-dark-950">
               <iframe

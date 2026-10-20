@@ -16,7 +16,7 @@ export function FinalCTA() {
       <div className="ambient-float-2 absolute bottom-10 right-1/4 w-96 h-96 bg-amber-brand/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="container-editorial relative z-10">
-        <div className="max-w-4xl mx-auto rounded-3xl bg-dark-950/90 border border-gold/40 p-8 sm:p-14 text-center shadow-dark-card-lg relative reveal-init overflow-hidden">
+        <div className="max-w-4xl mx-auto rounded-3xl bg-dark-950/90 border border-gold/40 p-8 sm:p-14 text-center shadow-dark-card-lg relative reveal-scale overflow-hidden">
           
           {/* Subtle gold corner accents */}
           <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-gold/60 rounded-tl-3xl pointer-events-none" />
@@ -29,7 +29,7 @@ export function FinalCTA() {
           </div>
 
           {/* Title */}
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-cream-50 leading-tight mb-6">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-cream-50 leading-tight mb-6 animate-glow-text">
             Sua Melhor Versão Começa Na Próxima Cadeira.
           </h2>
 
@@ -52,15 +52,15 @@ export function FinalCTA() {
 
           {/* Guarantee Badges */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-cream-400 pt-6 border-t border-dark-800">
-            <span className="flex items-center gap-1.5">
+            <span className="reveal-init reveal-delay-1 flex items-center gap-1.5">
               <ClockIcon className="w-3.5 h-3.5 text-gold" />
               <span>Agendamento em 60 segundos</span>
             </span>
-            <span className="flex items-center gap-1.5">
+            <span className="reveal-init reveal-delay-2 flex items-center gap-1.5">
               <BeerIcon className="w-3.5 h-3.5 text-amber-brand" />
               <span>Chopp artesanal de boas-vindas</span>
             </span>
-            <span className="flex items-center gap-1.5">
+            <span className="reveal-init reveal-delay-3 flex items-center gap-1.5">
               <RazorIcon className="w-3.5 h-3.5 text-gold" />
               <span>Garantia de satisfação</span>
             </span>

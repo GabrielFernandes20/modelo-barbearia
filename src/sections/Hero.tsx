@@ -149,6 +149,22 @@ export function Hero() {
           </div>
 
         </div>
+
+        {/* Indicador animado de rolagem */}
+        <div className="mt-10 lg:mt-14 flex flex-col items-center justify-center animate-fade-in-up" style={{ animationDelay: '1000ms' }}>
+          <a
+            href="#servicos"
+            aria-label="Rolar para explorar serviços"
+            className="group flex flex-col items-center gap-2 text-cream-400 hover:text-gold transition-colors"
+          >
+            <span className="text-[11px] font-medium uppercase tracking-widest text-cream-400 group-hover:text-gold transition-colors">
+              Role para explorar
+            </span>
+            <div className="flex h-8 w-5 items-start justify-center rounded-full border border-dark-700 group-hover:border-gold p-1 transition-colors">
+              <div className="h-1.5 w-1.5 rounded-full bg-gold animate-bounce-subtle" />
+            </div>
+          </a>
+        </div>
       </div>
     </section>
   );

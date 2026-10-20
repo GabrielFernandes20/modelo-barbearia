@@ -89,10 +89,10 @@ export function PackageCalculator() {
         </div>
 
         {/* Calculator layout */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start reveal-init">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Options Grid (7 columns) */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="reveal-from-left lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             {COMBO_OPTIONS.map((item) => {
               const isSelected = selectedIds.includes(item.id);
               return (
@@ -130,9 +130,9 @@ export function PackageCalculator() {
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-gold font-mono">R$ {item.price}</span>
                       <div
-                        className={`w-5 h-5 rounded-full flex items-center justify-center border transition-colors ${
+                        className={`w-5 h-5 rounded-full flex items-center justify-center border transition-all duration-200 ${
                           isSelected
-                            ? "bg-gold border-gold text-dark-950 font-bold"
+                            ? "bg-gold border-gold text-dark-950 font-bold scale-110 animate-check-spring"
                             : "border-dark-700 bg-dark-800 text-transparent"
                         }`}
                       >
@@ -146,7 +146,7 @@ export function PackageCalculator() {
           </div>
 
           {/* Live Summary Card (5 columns) */}
-          <div className="lg:col-span-5 bg-dark-900 border border-gold/30 rounded-2xl p-6 sm:p-7 shadow-dark-card-lg sticky top-28">
+          <div className="reveal-from-right lg:col-span-5 bg-dark-900 border border-gold/30 rounded-2xl p-6 sm:p-7 shadow-dark-card-lg sticky top-28">
             <div className="flex items-center justify-between pb-4 border-b border-dark-800 mb-5">
               <span className="font-display text-base font-bold text-cream-50 uppercase tracking-wider">
                 Resumo da Sua Sessão
@@ -164,7 +164,7 @@ export function PackageCalculator() {
             ) : (
               <div className="space-y-3 mb-6 max-h-48 overflow-y-auto pr-1">
                 {selectedItems.map((item) => (
-                  <div key={item.id} className="flex items-center justify-between text-xs py-1 border-b border-dark-800/60">
+                  <div key={item.id} className="flex items-center justify-between text-xs py-1 border-b border-dark-800/60 animate-toast-slide">
                     <span className="text-cream-200 font-medium">{item.name}</span>
                     <span className="text-gold font-mono font-semibold">R$ {item.price}</span>
                   </div>
@@ -183,7 +183,7 @@ export function PackageCalculator() {
               </div>
 
               {discountPercent > 0 && (
-                <div className="flex items-center justify-between text-emerald-400 font-semibold">
+                <div className="flex items-center justify-between text-emerald-400 font-semibold animate-badge-pop">
                   <span>Desconto de Combo ({discountPercent}%):</span>
                   <span>- R$ {discountValue}</span>
                 </div>
@@ -209,7 +209,7 @@ export function PackageCalculator() {
                   )}
                 </div>
                 <div className="text-right">
-                  <span className="font-display text-3xl font-bold text-gold">
+                  <span key={finalPrice} className="font-display text-3xl font-bold text-gold inline-block animate-price-pop">
                     R$ {finalPrice}
                   </span>
                 </div>

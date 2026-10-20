@@ -147,7 +147,9 @@ export function BeforeAfter() {
               ref={containerRef}
               onMouseDown={() => setIsDragging(true)}
               onTouchStart={() => setIsDragging(true)}
-              className="relative w-full h-[360px] sm:h-[480px] rounded-xl overflow-hidden cursor-ew-resize select-none border border-gold/20"
+              className={`relative w-full h-[360px] sm:h-[480px] rounded-xl overflow-hidden select-none border border-gold/20 transition-all ${
+                isDragging ? "cursor-grabbing" : "cursor-ew-resize"
+              }`}
             >
               {/* AFTER Image (Full background) */}
               <img

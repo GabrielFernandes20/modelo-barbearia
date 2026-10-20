@@ -6,11 +6,17 @@ import { RazorIcon, WhatsAppIcon, MenuIcon, CloseIcon } from "./icons";
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (window.scrollY / totalScroll) * 100)));
+      }
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -48,6 +54,13 @@ export function Header() {
           : "bg-gradient-to-b from-dark-950/95 to-transparent py-5"
       }`}
     >
+      {/* Luxury Gold Scroll Progress Bar */}
+      <div
+        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-gold via-amber-brand to-gold shadow-gold-glow transition-[width] duration-100 ease-out pointer-events-none"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
+
       <div className="container-editorial flex items-center justify-between gap-4">
         {/* Brand / Logo */}
         <a href="#inicio" className="flex items-center gap-3 shrink-0 group focus:outline-none">
